@@ -5,7 +5,7 @@
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
 </div>
 <div class="container mt-5">
-    <table class="table table-striped">
+    <table id="myTable" class="display">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -27,7 +27,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="container mx-auto">{{ $users->links('vendor.pagination.custom-pagination') }}</div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,6 +66,7 @@
 
 <script>
     $(document).ready(function() {
+        let table = new DataTable('#myTable');
         $('.delete_user_btn').click(function() {
             let conf = confirm('Are you sure to delete?');
             if (conf == false) {

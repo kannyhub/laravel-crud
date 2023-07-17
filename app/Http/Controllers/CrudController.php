@@ -17,11 +17,13 @@ class CrudController extends Controller
             ->orderBy('id', 'desc')
             ->where('name','like','%'.$keyword.'%')
             ->orWhere('email','like','%'.$keyword.'%')
-            ->paginate(5);
+            ->get();
+            // ->paginate(5);
         } else {
             $users = User::where('role','user')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
+            // ->paginate(5);
         }
         
         return view('user.list',compact('users'));
